@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+
+  ## frontend service
+  fastapi:
+    container_name: fastapi_container
+    build: ./../../app
+    ports:
+      - "80:80"

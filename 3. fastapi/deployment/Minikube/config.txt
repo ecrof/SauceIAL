@@ -1,0 +1,11 @@
+# configuration file for docker pull:
+
+# dockerregistryserver="https://registry.gitlab.com"
+# dockerusername="ecrof"
+# dockerpassword="3jqm-Hz-^vVLSrA"
+# dockeremail="antoinevanhoof28@gmail.com"
+
+dockerregistryserver="https://index.docker.io/v1/"
+dockerusername="ecrof"
+dockerpassword="Eniotnavh0"
+dockeremail="antoinevanhoof28@gmail.com"

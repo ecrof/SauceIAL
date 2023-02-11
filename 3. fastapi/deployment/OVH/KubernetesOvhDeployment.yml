@@ -1,0 +1,94 @@
+# [TODO]
+
+# Créer le service d'acces IP-externe
+# un loadbalancer dans le cloud
+apiVersion: v1
+kind: Service
+metadata:
+  name: ucoachme-loadbalancer
+  labels:
+    app: ucoachme-tool
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: ucoachme-tool
+---
+# # Créer un déployement test OVH
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: ucoachme-frontend-deployment
+#   labels:
+#     app: ucoachme-tool
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: ucoachme-tool
+#   template:
+#     metadata:
+#       labels:
+#         app: ucoachme-tool
+#     spec:
+#       containers:
+#       - name: ucoachme
+#         image: ovhplatform/hello
+#         ports:
+#         - containerPort: 80
+---
+# # Créer le provisionning
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: ucoachme-persistentvolume
+#   labels:
+#     app: ucoachme-tool
+# spec:
+#   storageClassName: manual
+#   capacity: 
+#     storage: 1Gi
+#   accessModes: 
+#     - ReadWriteOnce
+#   hostPath: # or NFS,...
+#     path: "/pvdata"
+# ---
+# # Créer l'instance de consommation: pour utiliser le provisionning dans un pod
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: ucoachme-persistentvolumeclaim
+#   labels:
+#     app: ucoachme-tool
+# spec:
+#   storageClassName: manual
+#   accessModes: 
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 1Gi
+# ---
+# # Création du pod qui utilise le volume (normallement la DB)
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: monpods
+#   labels:
+#     app: ucoachme-tool
+# spec:
+#   volumes:
+#     - name: monstorage
+#       persistentVolumeClaim:
+#        claimName: ucoachme-persistentvolumeclaim
+#   containers:
+#     - name: monnginx
+#       image: nginx
+#       ports:
+#         - containerPort: 80
+#       volumeMounts:
+#         - mountPath: "/usr/share/nginx/html"
+#           name: monstorage
