@@ -10,7 +10,7 @@ typing_extensions==4.4.0
 uvicorn==0.19.0
 django==2.2
 requests
-#email-validator==1.8.1
+email-validator
 
 #for template
 jinja2
@@ -23,3 +23,16 @@ psycopg2-binary
 
 #for loading environment variables
 python-dotenv
+
+#for email validation 
+pydantic[email] 
+
+#hashing
+passlib[bcrypt] 
+
+#for testing
+pytest
+requests
+
+httpx
+passlib
