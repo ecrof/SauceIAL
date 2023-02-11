@@ -9,5 +9,5 @@
 ```$ pip3 install -r app/requirements.txt ```
 
 ## Run the app
-```$ uvicorn app.main:app --host 0.0.0.0 --port 80```
-# uvicorn main:app --reload
+```$ uvicorn app.main:app --host 0.0.0.0 --port 80 --reload```
+uvicorn main:app --reload
