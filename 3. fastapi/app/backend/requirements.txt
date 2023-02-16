@@ -36,3 +36,5 @@ requests
 
 httpx
 passlib
+
+pre-commit
